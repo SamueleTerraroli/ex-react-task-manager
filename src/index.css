@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+td {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.status-todo {
+    background-color: #ffcccc;
+    /* Rosso */
+}
+
+.status-doing {
+    background-color: #ffeb99;
+    /* Giallo */
+}
+
+.status-done {
+    background-color: #ccffcc;
+    /* Verde */
+}
+
+/* Effetto hover per migliorare l'interazione */
+tr:hover {
+    background-color: #f1f1f1;
+}
