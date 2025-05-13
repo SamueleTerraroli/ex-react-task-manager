@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useGlobalContext } from "../context/GlobalContext"
+import { useState } from "react";
+import Modal from "../components/Modal";
 
 const TaskDetail = () => {
 
@@ -8,6 +10,7 @@ const TaskDetail = () => {
     const { tasks, removeTask } = useGlobalContext();
 
     const task = tasks.find(t => t.id === parseInt(id));
+    const [showModal, setShowModal] = useState(false);
 
     const handleDelete = async () => {
         try {
@@ -35,7 +38,16 @@ const TaskDetail = () => {
                 day: '2-digit', month: 'long', year: 'numeric'
             })}</p>
 
-            <button onClick={handleDelete}>Elimina</button>
+            <button onClick={(() => setShowModal(true))}>Elimina</button>
+
+            <Modal
+                title='Elimina task'
+                content={<p>Sei sicuro di voler eliminare la task?</p>}
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                onConfirm={handleDelete}
+                confirmText="elimina"
+            />
 
         </div>
     )
