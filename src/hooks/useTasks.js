@@ -16,7 +16,7 @@ export default function useTasks() {
     }, []);
 
     const addTask = async newTask => {
-        const response = await fetch(`${VITE_API_URL}/tasks`, {
+        const response = await fetch(`${VITE_API_URL}/tasks`, { //oggetto di configurazione
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newTask)
@@ -26,8 +26,15 @@ export default function useTasks() {
 
         setTasks(prev => [...prev, task])
     }
-    const removeTask = () => {
-        //rimuovere le task
+    const removeTask = async taskId => {
+        const response = await fetch(`${VITE_API_URL}/tasks/${taskId}`, {
+            method: 'DELETE'
+        });
+        const { success, message } = await response.json();
+        if (!success) throw new Error(message);
+
+        setTasks(prev => prev.filter(t => t.id !== taskId));
+
     }
     const updateTask = () => {
         //modificare le task
