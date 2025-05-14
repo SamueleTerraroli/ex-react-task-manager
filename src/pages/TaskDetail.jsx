@@ -50,8 +50,8 @@ const TaskDetail = () => {
                 day: '2-digit', month: 'long', year: 'numeric'
             })}</p>
 
-            <button onClick={(() => setShowModal(true))}>Elimina</button>
-            <button onClick={(() => setShowEditModal(true))}>Modifica Task</button>
+            <button className="task-detail-buttons" onClick={(() => setShowModal(true))}>Elimina</button>
+            <button className="task-detail-buttons" onClick={(() => setShowEditModal(true))}>Modifica Task</button>
 
 
             <Modal
